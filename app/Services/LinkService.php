@@ -29,4 +29,23 @@ class LinkService
         ]);
     }
 
+    public function getLinkByCode(string $code): string
+    {
+        $link = Link::query()
+            ->where('code', $code)
+            ->firstOrFail();
+
+        $link->increment('clicks');
+
+        return $link->url;
+    }
+
+    public function getLinkStats(string $code): Link
+    {
+        return Link::query()
+            ->where('code', $code)
+            ->firstOrFail();
+
+    }
+
 }

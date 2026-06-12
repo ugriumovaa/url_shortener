@@ -28,6 +28,10 @@ services:
             MYSQL_ROOT_USER: root
             MYSQL_ROOT_PASSWORD: root
         volumes:
-            - ./tmp/db:/var/lib/mysql
+            - db:/var/lib/mysql
         ports:
             - "8101:3306"
+
+volumes:
+    db:
+        driver: local
