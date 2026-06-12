@@ -9,3 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/links', [LinkController::class, 'store']);
+Route::get('/links/{code}/stats', [LinkController::class, 'stats']);
