@@ -25,8 +25,9 @@ services:
         restart: always
         environment:
             MYSQL_DATABASE: url_shortener
+            MYSQL_ROOT_USER: root
             MYSQL_ROOT_PASSWORD: root
         volumes:
             - ./tmp/db:/var/lib/mysql
         ports:
-            - "3306:3306"
+            - "8101:3306"
