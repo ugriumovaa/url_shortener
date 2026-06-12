@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class LinkService
 {
-    public static function generateShortCode(): array|false|string
+    public static function generateShortCode(): string
     {
         return Str::lower(Str::random(6));
     }
