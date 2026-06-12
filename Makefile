@@ -5,7 +5,7 @@ APP       := $(COMPOSE) exec -T app
 APP_RUN   := $(COMPOSE) run --rm app
 APP_URL   := http://localhost:8076
 
-.PHONY: help up down restart build rebuild logs ps env env-docker setup install key wait-db migrate fresh seed test cache-clear optimize shell bash composer artisan npm-install npm-build npm-dev pint clean
+.PHONY: help up down restart build rebuild logs ps env env-docker setup install key wait-db migrate fresh seed test cache-clear optimize shell bash composer artisan pint clean
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-18s\033[0m %s\n", $$1, $$2}'
@@ -43,9 +43,8 @@ env: ## Create .env from .env.example
 setup: build up install key wait-db migrate ## First-time setup
 	@echo "Done. Open $(APP_URL)"
 
-install: ## Install composer and npm dependencies
+install: ## Install composer
 	$(APP_RUN) composer install --no-interaction --prefer-dist
-	npm install --ignore-scripts
 
 key: ## Generate APP_KEY
 	$(APP) php artisan key:generate --force
