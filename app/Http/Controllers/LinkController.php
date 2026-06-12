@@ -17,7 +17,7 @@ class LinkController extends Controller
         return new StoreLinkResource($this->service->createShortUrl($request->validated('url')));
     }
 
-    function redirect(string $code): RedirectResponse
+    public function redirect(string $code): RedirectResponse
     {
         return redirect()->away($this->service->getLinkByCode($code));
     }

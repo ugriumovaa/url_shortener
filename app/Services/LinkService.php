@@ -23,6 +23,7 @@ class LinkService
         }
 
         $code = $this->generateShortCode();
+
         return Link::query()->create([
             'url' => $link,
             'code' => $code,
@@ -47,5 +48,4 @@ class LinkService
             ->firstOrFail();
 
     }
-
 }
